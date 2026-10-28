@@ -1,0 +1,30 @@
+# Simulation outputs (generated at runtime) -- the example template under
+# data/templates/ IS tracked, only the per-run output tree is ignored.
+data/runs/*
+!data/runs/.gitkeep
+*.stl
+*.vtk
+*.vtu
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.ipynb_checkpoints/
+.venv/
+
+# Django/Celery backend
+.env
+backend/db.sqlite3
+backend/staticfiles/
+
+# React frontend
+frontend/node_modules/
+frontend/dist/
+
+# Portable Node.js toolchain (local-only, not committed)
+.tools/
+
+# OS cruft
+.DS_Store
+Thumbs.db

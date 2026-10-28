@@ -1,0 +1,289 @@
+:root {
+  color-scheme: light dark;
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f5f6f8;
+  color: #1a1d21;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #15171a;
+    color: #e6e8eb;
+  }
+}
+
+.demo-banner {
+  padding: 0.6rem 1.5rem;
+  background: #d97706;
+  color: #1a1205;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.demo-banner a {
+  color: inherit;
+  font-weight: 700;
+}
+
+.app-header {
+  padding: 0.85rem 1.5rem;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.25);
+  background: rgba(127, 127, 127, 0.04);
+}
+
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.app-logo {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.app-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(127, 127, 127, 0.3);
+}
+
+.app-titles {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.app-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.app-subtitle {
+  font-size: 0.8rem;
+  opacity: 0.65;
+}
+
+.app-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.page-header .btn {
+  margin-top: 0;
+}
+
+.card {
+  background: rgba(127, 127, 127, 0.06);
+  border: 1px solid rgba(127, 127, 127, 0.15);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  border: 1px solid rgba(127, 127, 127, 0.3);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: none;
+  margin-top: 0.75rem;
+  margin-right: 0.5rem;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: white;
+}
+
+.btn-danger {
+  background: #dc2626;
+  border-color: #dc2626;
+  color: white;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.15);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.stage-card {
+  border: 1px solid rgba(127, 127, 127, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.stage-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.stage-card-actions .btn {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8rem;
+  margin-top: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 480px;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.form input {
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid rgba(127, 127, 127, 0.35);
+  background: transparent;
+  color: inherit;
+  font-size: 0.95rem;
+}
+
+.field-viewer {
+  padding: 0.75rem 0;
+}
+
+.field-viewer-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.field-radio {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.field-viewer-img {
+  max-width: 100%;
+  border-radius: 6px;
+  border: 1px solid rgba(127, 127, 127, 0.2);
+}
+
+.field-viewer-loading {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.25rem 1rem;
+  margin: 0;
+}
+
+.kv dt {
+  opacity: 0.65;
+}
+
+.kv dd {
+  margin: 0;
+}
+
+.mono {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+
+.muted {
+  opacity: 0.6;
+}
+
+.error-text {
+  color: #dc2626;
+}
+
+.log-panel {
+  max-height: 320px;
+  overflow-y: auto;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.82rem;
+  background: rgba(127, 127, 127, 0.08);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+}
+
+.log-line {
+  padding: 0.1rem 0;
+  white-space: pre-wrap;
+}
+
+.log-error {
+  color: #dc2626;
+}
+
+.log-warning {
+  color: #d97706;
+}

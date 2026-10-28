@@ -1,0 +1,153 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      snappyHexMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+castellatedMesh true;
+snap            true;
+// Off by default: boundary layers on a thin, sharp-trailing-edge airfoil
+// are a common source of snappyHexMesh failures. Enable once the base mesh
+// (without layers) is confirmed to work well for your geometry.
+addLayers       false;
+
+
+geometry
+{
+    op1
+    {
+        type triSurfaceMesh;
+        file "op1.stl";
+    }
+
+    nearAirfoilBox
+    {
+        type searchableBox;
+        min (-0.3 -0.3 0);
+        max ( 1.3  0.3 1);
+    }
+};
+
+
+castellatedMeshControls
+{
+    maxLocalCells 100000;
+    maxGlobalCells 2000000;
+    minRefinementCells 10;
+    maxLoadUnbalance 0.10;
+    nCellsBetweenLevels 3;
+
+    features
+    (
+        {
+            file "op1.eMesh";
+            level 4;
+        }
+    );
+
+    refinementSurfaces
+    {
+        op1
+        {
+            // Surface-wise min and max refinement level
+            level (3 4);
+
+            patchInfo
+            {
+                type wall;
+                inGroups (airfoilGroup);
+            }
+        }
+    }
+
+    resolveFeatureAngle 30;
+
+    refinementRegions
+    {
+        nearAirfoilBox
+        {
+            mode inside;
+            levels ((1E15 2));
+        }
+    }
+
+    // Must be inside the fluid domain, never inside the airfoil solid or on
+    // a face. (-1.5 0 0.5) is near the inlet, well clear of the airfoil
+    // (which spans roughly x in [0,1], y near 0).
+    locationInMesh (-1.5 0 0.5);
+
+    allowFreeStandingZoneFaces true;
+}
+
+
+snapControls
+{
+    nSmoothPatch 3;
+    tolerance 2.0;
+    nSolveIter 30;
+    nRelaxIter 5;
+
+    nFeatureSnapIter 10;
+    implicitFeatureSnap false;
+    explicitFeatureSnap true;
+    multiRegionFeatureSnap false;
+}
+
+
+addLayersControls
+{
+    relativeSizes true;
+
+    layers
+    {
+        "op1.*"
+        {
+            nSurfaceLayers 2;
+        }
+    }
+
+    expansionRatio 1.2;
+    finalLayerThickness 0.3;
+    minThickness 0.1;
+    nGrow 0;
+
+    featureAngle 60;
+    slipFeatureAngle 30;
+    nRelaxIter 3;
+    nSmoothSurfaceNormals 1;
+    nSmoothNormals 3;
+    nSmoothThickness 10;
+    maxFaceThicknessRatio 0.5;
+    maxThicknessToMedialRatio 0.3;
+    minMedianAxisAngle 90;
+    nBufferCellsNoExtrude 0;
+    nLayerIter 50;
+}
+
+
+meshQualityControls
+{
+    #include "meshQualityDict"
+}
+
+
+writeFlags
+(
+    scalarLevels
+    layerSets
+    layerFields
+);
+
+mergeTolerance 1e-6;
+
+// ************************************************************************* //

@@ -1,0 +1,21 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+
+// Freestream velocity (chord = 1 m, nu = 1.5e-05 -> Re ~= 1.3e6).
+// Tune to match the Reynolds number / angle of attack range you actually
+// care about -- angle of attack itself comes from the STL's own rotation
+// (see geometry.random_airfoil_generator.generator), not from this vector.
+flowVelocity         (20 0 0);
+pressure             0;
+
+// k/omega from a rough 5% turbulence intensity estimate at this velocity;
+// fine as a generic default, not tuned to any particular wind-tunnel case.
+turbulentKE          0.24;
+turbulentOmega       1.78;
+
+// ************************************************************************* //
