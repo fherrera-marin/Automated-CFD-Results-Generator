@@ -11,7 +11,12 @@ export default function CaseFieldViewer({ runId, caseId }: { runId: number; case
   // of a blank/broken-looking image while that's in flight.
   const [isLoading, setIsLoading] = useState(true)
 
-  const src = `${api.caseFieldUrl(runId, caseId, field)}&_=${nonce}`
+  // The real backend's URL already has `?field=...`, so the cache-buster
+  // needs `&`; the static demo build's URL is a plain file path with no
+  // query string at all, so it needs `?` instead -- blindly using `&` there
+  // produced an invalid path like "case41_p.png&_=0" that 404s.
+  const baseUrl = api.caseFieldUrl(runId, caseId, field)
+  const src = `${baseUrl}${baseUrl.includes('?') ? '&' : '?'}_=${nonce}`
 
   return (
     <div className="field-viewer">
