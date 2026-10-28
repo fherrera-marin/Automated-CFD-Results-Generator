@@ -7,8 +7,8 @@ in ParaView, and assemble a labeled dataset ready to train a CNN surrogate model
 all orchestrated from a React UI with live progress, logs, and per-case field
 visualization.
 
-**Live demo:** _add the link here once GitHub Pages is live_ — sample data,
-no backend, see [Live demo](#live-demo) below for how it's built/deployed.
+**[Live demo](https://fherrera-marin.github.io/Automated-CFD-Results-Generator/)** —
+sample data, no backend, see [Live demo](#live-demo) below for how it's built/deployed.
 
 ## What it does
 
