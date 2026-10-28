@@ -28,3 +28,6 @@ frontend/dist/
 # OS cruft
 .DS_Store
 Thumbs.db
+
+# Claude Code local state (never meant to be public)
+.claude/
